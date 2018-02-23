@@ -239,11 +239,10 @@ function dragula (initialContainers, options) {
     var item = _copy || _item;
     var clientX = getCoord('clientX', e);
     var clientY = getCoord('clientY', e);
-    var dropTarget = getElementBehindPoint(_mirror, clientX, clientY);
-    //var dropTarget = findDropTarget(elementBehindCursor, clientX, clientY);
-
+    var elementBehindCursor = getElementBehindPoint(_mirror, clientX, clientY);
+    var dropTarget = findDropTarget(elementBehindCursor, clientX, clientY);
     if (dropTarget && ((_copy && o.copySortSource) || (!_copy || dropTarget !== _source))) {
-      drop(item, dropTarget);
+      drop(item, elementBehindCursor);
     } else if (o.removeOnSpill) {
       remove();
     } else {
