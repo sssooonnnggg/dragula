@@ -336,24 +336,32 @@ function dragula (initialContainers, options) {
 
   function findDropTarget (elementBehindCursor, clientX, clientY) {
     var target = elementBehindCursor;
-    while (target && !accepted()) {
+    var result = 0;
+    while (target && (result = accepted()) == 0) {
       target = getParent(target);
+    }
+    if (reulst == -1) {
+      target = null;
     }
     return target;
 
     function accepted () {
       var droppable = isContainer(target);
       if (droppable === false) {
-        return false;
+        return 0;
       }
 
       var immediate = getImmediateChild(target, elementBehindCursor);
       var reference = getReference(target, immediate, clientX, clientY);
       var initial = isInitialPlacement(target, reference);
       if (initial) {
-        return true; // should always be able to drop it right back where it was
+        return 1; // should always be able to drop it right back where it was
       }
-      return o.accepts(_item, target, _source, reference);
+      if (o.accepts(_item, target, _source, reference)) {
+        return 1;
+      } else {
+        return -1;
+      }
     }
   }
 
