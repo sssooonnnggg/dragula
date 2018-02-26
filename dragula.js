@@ -340,7 +340,7 @@ function dragula (initialContainers, options) {
     while (target && (result = accepted()) == 0) {
       target = getParent(target);
     }
-    if (reulst == -1) {
+    if (result == -1) {
       target = null;
     }
     return target;
