@@ -337,10 +337,10 @@ function dragula (initialContainers, options) {
   function findDropTarget (elementBehindCursor, clientX, clientY) {
     var target = elementBehindCursor;
     var result = 0;
-    while (target && (result = accepted()) == 0) {
+    while (target && (result = accepted()) === 0) {
       target = getParent(target);
     }
-    if (result == -1) {
+    if (result === -1) {
       target = null;
     }
     return target;
