@@ -106,13 +106,6 @@ function dragula (initialContainers, options) {
     }
     _grabbed = context;
     eventualMovements();
-    if (e.type === 'mousedown') {
-      if (isInput(item)) { // see also: https://github.com/bevacqua/dragula/issues/208
-        item.focus(); // fixes https://github.com/bevacqua/dragula/issues/176
-      } else {
-        e.preventDefault(); // fixes https://github.com/bevacqua/dragula/issues/155
-      }
-    }
   }
 
   function startBecauseMouseMoved (e) {
