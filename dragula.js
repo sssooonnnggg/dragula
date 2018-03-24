@@ -411,7 +411,7 @@ function dragula (initialContainers, options) {
         dropTarget.insertBefore(item, reference);
       }
       item.style.display = 'block';
-      drake.emit('shadow', item, dropTarget, _source);
+      drake.emit('shadow', item, dropTarget, _source, _currentSibling);
     }
     function moved (type) { drake.emit(type, item, _lastDropTarget, _source); }
     function over () { if (changed) { moved('over'); } }
